@@ -450,7 +450,7 @@ def nu_eval(expression):
     operators = {ast.Mult: op.mul, ast.Div: op.truediv, ast.Pow: op.pow, ast.USub: op.neg}
 
     def _eval(node):
-        if isinstance(node, ast.Num):
+        if isinstance(node, ast.Constant):
             return node.n
         elif isinstance(node, ast.BinOp):  # <left> <operator> <right>
             return operators[type(node.op)](_eval(node.left), _eval(node.right))
